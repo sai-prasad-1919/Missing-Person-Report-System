@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Missing Person - Missing Person Finder</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/report-missing.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Top Back Button -->
+        <a href="/admin/dashboard" class="top-back-button">
+            <i class="bi bi-arrow-left"></i>
+            Back to Dashboard
+        </a>
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="header-content">
+                <h1>Report Missing Person</h1>
+                <p class="header-subtitle">Help us find missing persons and reunite them with their families</p>
+            </div>
+        </div>
+
+        <!-- Main Form -->
+        <div class="report-form">
+            <form action="/admin/report-missing" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+                <!-- Reporter Information Card -->
+                <div class="card form-section">
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            <i class="bi bi-person-circle"></i>
+                            Reporter Information
+                        </h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="reporterName" class="form-label">Reporter Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                    <input type="text" class="form-control" id="reporterName" name="reporterName" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="reporterType" class="form-label">Reporter Type</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-person-badge"></i></span>
+                                    <select class="form-select" id="reporterType" name="reporterType" required>
+                                        <option value="" disabled selected>Select Type</option>
+                                        <option value="Parent">Parent</option>
+                                        <option value="Guardian">Guardian</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address" class="form-label">Address</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+                                    <input type="text" class="form-control" id="address" name="address" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Missing Person Details Card -->
+                <div class="card form-section">
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            <i class="bi bi-person-badge"></i>
+                            Missing Person Details
+                        </h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="childName" class="form-label">Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                    <input type="text" class="form-control" id="childName" name="childName" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="age" class="form-label">Age</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                                    <input type="number" class="form-control" id="age" name="age" min="0" max="100" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gender" class="form-label">Gender</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-gender-ambiguous"></i></span>
+                                    <select class="form-select" id="gender" name="gender" required>
+                                        <option value="" selected disabled>Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastSeenLocation" class="form-label">Last Seen Location</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+                                    <input type="text" class="form-control" id="lastSeenLocation" name="lastSeenLocation" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastSeenDate" class="form-label">Last Seen Date</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-calendar-date"></i></span>
+                                    <input type="date" class="form-control" id="lastSeenDate" name="lastSeenDate" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="description" class="form-label">Description</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+                                    <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="photo" class="form-label">Photo</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-camera"></i></span>
+                                    <input type="file" name="photo" id="photo" class="form-control" required>
+                                </div>
+                                <div class="form-text">Maximum file size: 5 MB. Supported formats: JPEG, PNG</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Police Station Details Card -->
+                <div class="card form-section">
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            <i class="bi bi-building"></i>
+                            District & Police Station
+                        </h3>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="district" class="form-label">District</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-geo"></i></span>
+                                    <input type="text" class="form-control" id="district" name="district" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="stationName" class="form-label">Station Name</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-building"></i></span>
+                                    <input type="text" class="form-control" id="stationName" name="stationName" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="stationPhone" class="form-label">Station Phone</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                                    <input type="tel" class="form-control" id="stationPhone" name="stationPhone" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="stationLocation" class="form-label">Station Location</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+                                    <input type="text" class="form-control" id="stationLocation" name="stationLocation" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Buttons -->
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary submit-btn">
+                        <i class="bi bi-check-circle"></i>
+                        Submit Report
+                    </button>
+                    <a href="/admin/dashboard" class="btn btn-outline-secondary back-btn">
+                        <i class="bi bi-arrow-left"></i>
+                        Back to Dashboard
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/report-missing.js"></script>
+</body>
+</html>

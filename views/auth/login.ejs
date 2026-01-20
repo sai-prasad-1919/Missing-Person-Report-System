@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Login - Missing Person Report System</title>
+  <link rel="stylesheet" href="/css/login.css" />
+  <style>
+    .error-message {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+      display: none;
+    }
+    .invalid-input {
+      border: 2px solid red !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="login-card">
+      <div class="login-header">
+        <h1>Welcome Back</h1>
+        <p>Please login to access your dashboard</p>
+      </div>
+      <form class="login-form" method="POST" action="/login" onsubmit="return validateEmail()">
+        <div class="form-group">
+          <label for="email">Email ID</label>
+          <input type="email" id="email" name="email" required placeholder="Enter your email">
+          <div id="emailError" class="error-message">Please enter a valid Gmail address</div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required placeholder="Enter your password">
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+      </form>
+      
+      <div class="form-footer">
+        <p class="register-text">Don't have an account? <a href="/register">Register</a></p>
+      </div>
+      <a href="/" class="back-home">Back to Home</a>
+    </div>
+  </div>
+
+  <script>
+    function validateEmail() {
+      const emailInput = document.getElementById('email');
+      const emailError = document.getElementById('emailError');
+      const email = emailInput.value.trim();
+      
+      if (!email.endsWith('@gmail.com')) {
+        emailInput.classList.add('invalid-input');
+        emailError.style.display = 'block';
+        return false;
+      }
+      
+      emailInput.classList.remove('invalid-input');
+      emailError.style.display = 'none';
+      return true;
+    }
+
+    // Add event listener for real-time validation
+    document.getElementById('email').addEventListener('input', function() {
+      const email = this.value.trim();
+      const emailError = document.getElementById('emailError');
+      
+      if (email && !email.endsWith('@gmail.com')) {
+        this.classList.add('invalid-input');
+        emailError.style.display = 'block';
+      } else {
+        this.classList.remove('invalid-input');
+        emailError.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

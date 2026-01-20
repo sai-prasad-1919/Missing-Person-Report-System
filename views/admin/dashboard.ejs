@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Missing Person Finder</title>
+    <link rel="stylesheet" href="/css/admin-dashboard.css">
+</head>
+<body>
+    <header class="dashboard-header">
+        <h1>Admin Dashboard</h1>
+    </header>
+
+    <a href="/admin/login" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Login
+    </a>
+
+    <nav class="dashboard-nav">
+        <div class="nav-container">
+            <a href="/">Home</a>
+            <!-- <a href="/admin/reports-missing">Add Missing Report</a>
+            <a href="/admin/reports-found">Add Found Report</a> -->
+            <a href="/admin/viewReports-missing">View Missing Reports</a>
+            <a href="/admin/viewReports-found">View Found Reports</a>
+            <a href="/admin/logout" class="logout-btn">Logout</a>
+        </div>
+    </nav>
+    <main>
+        <div class="dashboard-container">
+            <div class="welcome-message">
+                <h2>Welcome to the Admin Panel</h2>
+                <p>Manage and review missing and found person reports efficiently. Use the navigation menu above to access different sections of the dashboard.</p>
+            </div>
+            
+            <div class="quick-actions">
+                <div class="action-card">
+                    <h3>Missing Reports</h3>
+                    <p>Add and manage reports for missing persons</p>
+                    <a href="/admin/reports-missing" class="action-btn">Add Report</a>
+                </div>
+                
+                <div class="action-card">
+                    <h3>Found Reports</h3>
+                    <p>Add and manage reports for found persons</p>
+                    <a href="/admin/reports-found" class="action-btn">Add Report</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

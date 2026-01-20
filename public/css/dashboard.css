@@ -1,0 +1,66 @@
+/* Add these styles to your existing dashboard.css */
+
+.case-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 30px;
+    padding: 1rem;
+}
+
+.case-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.case-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.case-card h2 {
+    color: #2563eb;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.case-card p {
+    color: #666;
+    line-height: 1.5;
+}
+
+.cases-content {
+    padding: 2rem;
+    min-height: calc(100vh - 80px);
+    background-color: #f8f9fa;
+    margin-top: 60px;
+}
+
+.cases-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cases-header {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.cases-header h1 {
+    color: #2563eb;
+    font-size: 2rem;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-weight: 600;
+}

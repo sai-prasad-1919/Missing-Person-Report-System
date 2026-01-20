@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Login - Missing Person Report System</title>
+  <link rel="stylesheet" href="/css/admin-login.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="login-card">
+      <div class="login-header">
+        <h1>Admin Login</h1>
+        <p>Missing Person Report System</p>
+      </div>
+
+      <% if (error) { %>
+        <div class="error-message" style="color: red; text-align: center; margin-bottom: 10px;">
+          <%= error %>
+        </div>
+      <% } %>
+
+
+      <form class="login-form" method="POST" action="/admin/login">
+        <div class="form-group">
+          <label for="adminId">Admin ID</label>
+          <input type="password" id="adminId" name="adminId" value="<%= typeof adminId !== 'undefined' ? adminId : '' %>" required>
+
+          <!-- woking okay removed because to show Invalid message -->
+          <!-- <input type="text" id="adminId" name="adminId" required> -->
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+      </form>
+      <a href="/" class="back-link">Back to Home</a>
+    </div>
+  </div>
+</body>
+</html>

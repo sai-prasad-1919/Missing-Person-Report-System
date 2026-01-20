@@ -1,0 +1,61 @@
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+
+// Admin (Police) Schema
+const adminSchema = new mongoose.Schema({
+    adminId: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    station: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+        lowercase: true,
+        trim: true
+    },
+    password: {
+        type: String,
+        required: true,
+        minlength: 6
+    },
+    role: {
+        type: String,
+        enum: ['Admin', 'SuperAdmin'],
+        default: 'Admin'
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+});
+
+// Encrypt password before saving
+adminSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) return next();
+    
+    try {
+        const salt = await bcrypt.genSalt(10);
+        this.password = await bcrypt.hash(this.password, salt);
+        next();
+    } catch (error) {
+        next(error);
+    }
+});
+
+// Method to compare passwords
+adminSchema.methods.matchPassword = function (enteredPassword) {
+    return bcrypt.compare(enteredPassword, this.password);
+};
+
+module.exports = mongoose.model('Admin', adminSchema);
