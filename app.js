@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const fs = require('fs');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
 const dotenv = require('dotenv');
@@ -12,6 +13,11 @@ dotenv.config();
 // Initialize the app
 const app = express();
 const PORT = process.env.PORT || 3000;
+const uploadDir = path.join(__dirname, 'uploads');
+
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGO_URI)
@@ -33,7 +39,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static(uploadDir));
 
 // ✅ Add session middleware before routes
 app.use(session({

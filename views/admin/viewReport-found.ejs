@@ -92,7 +92,7 @@
                         <!-- Image Section -->
                         <div class="card-image-container">
                             <% if (report.photo) { %>
-                                <img src="/<%= report.photo.replace('\\', '/') %>" class="card-img-top" alt="Found person">
+                                <img src="<%= report.photo.startsWith('http') ? report.photo : '/' + report.photo.replace(/\\/g, '/') %>" class="card-img-top" alt="Found person">
                             <% } else { %>
                                 <div class="no-image-placeholder">
                                     <i class="fas fa-user-circle"></i>

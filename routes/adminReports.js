@@ -2,6 +2,7 @@ const express = require('express');
 const MissingPersonReport = require('../models/MissingPersonReport');
 const FoundPersonReport = require('../models/FoundPersonReport');
 const upload = require('../middleware/upload'); // Adjust path if needed
+const cloudinary = require('../cloudConfig');
 const router = express.Router();
 
 function isAdminLoggedIn(req, res, next) {
@@ -51,7 +52,17 @@ router.post('/report-missing', upload.single('photo'), async (req, res) => {
       district, stationName, stationPhone, stationLocation
     } = req.body;
 
-    const photo = req.file ? req.file.path : null;
+    let photo = null;
+
+    if (req.file) {
+      const uploadedImage = await cloudinary.uploader.upload(
+        `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`,
+        {
+          folder: 'missing-person-finder'
+        }
+      );
+      photo = uploadedImage.secure_url;
+    }
 
     const report = new MissingPersonReport({
       reporterName,
@@ -127,7 +138,17 @@ router.post('/report-found', upload.single('photo'), async (req, res) => {
       stationName, stationPhone, stationLocation
     } = req.body;
 
-    const photo = req.file ? req.file.path : null;
+    let photo = null;
+
+    if (req.file) {
+      const uploadedImage = await cloudinary.uploader.upload(
+        `data:${req.file.mimetype};base64,${req.file.buffer.toString('base64')}`,
+        {
+          folder: 'missing-person-finder'
+        }
+      );
+      photo = uploadedImage.secure_url;
+    }
 
     const report = new FoundPersonReport({
       reporterName,

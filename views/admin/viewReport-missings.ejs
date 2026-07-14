@@ -58,7 +58,7 @@
                     <div class="card h-100">
                         <div class="card-image-container">
                         <% if (report.photo) { %>
-                            <img src="/<%= report.photo.replace('\\', '/') %>" class="card-img-top" alt="<%= report.childName %>">
+                            <img src="<%= report.photo.startsWith('http') ? report.photo : '/' + report.photo.replace(/\\/g, '/') %>" class="card-img-top" alt="<%= report.childName %>">
                         <% } else { %>
                             <img src="/images/placeholder.jpg" class="card-img-top" alt="No photo available">
                         <% } %>

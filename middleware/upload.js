@@ -1,15 +1,8 @@
 const multer = require('multer');
 const path = require('path');
 
-// Set storage engine
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/'); // Make sure this folder exists or create it
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname);
-  }
-});
+// Keep uploads in memory so they can be sent directly to Cloudinary.
+const storage = multer.memoryStorage();
 
 // File filter for image type
 const fileFilter = (req, file, cb) => {
