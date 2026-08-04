@@ -193,7 +193,17 @@ document.addEventListener('DOMContentLoaded', function() {
     Object.keys(validationRules).forEach(fieldId => {
         validFields[fieldId] = false;
     });
-    
+
+    // foundDate is pre-filled and read-only, so it never fires
+    // an 'input' or 'blur' event on its own — mark it valid manually
+    if (validFields.hasOwnProperty('foundDate')) {
+        validFields['foundDate'] = true;
+        if (foundDateInput) {
+            foundDateInput.classList.remove('is-invalid');
+            foundDateInput.classList.add('is-valid');
+        }
+    }
+
     // Function to validate a field
     function validateField(fieldId, value, showError = false) {
         const rule = validationRules[fieldId];
