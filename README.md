@@ -303,7 +303,7 @@ EJS template displays image via <img src="...">
 | **Submitted by** | Sai Prasad |
 | **Technology** | Node.js, Express.js, MongoDB |
 | **Architecture** | MVC (Model-View-Controller) |
-| **Year** | 2025–2026 |
+| **Year** | 2024–2025 |
 
 ---
 
