@@ -11,7 +11,7 @@
 
 A full-stack web application to **report, track, and manage missing person cases** digitally — built for both the public and police authorities.
 
-> 🎓 **Academic Minor Project** | Domain: Web Development | Year: 2025–2026
+> 🎓 **Academic Minor Project** | Domain: Web Development | Year: 2024–2025
 
 </div>
 
@@ -268,8 +268,8 @@ http://localhost:3000
 ### 🔐 Admin Access
 ```
 URL:      http://localhost:3000/admin/login
-Admin ID: admin
-Password: admin123
+Admin ID: *****
+Password: ********
 ```
 
 ---
