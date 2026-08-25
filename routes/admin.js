@@ -29,7 +29,7 @@ router.get('/admin/login', (req, res) => {
 router.post('/admin/login', (req, res) => {
   const { adminId, password } = req.body;
 
-  if (adminId !== 'admin') {
+  if (adminId !== process.env.ADMIN_ID) {
     return res.render('admin/login', {
       title: 'Admin Login',
       error: 'Invalid ID',
@@ -37,7 +37,7 @@ router.post('/admin/login', (req, res) => {
     });
   }
 
-  if (password !== 'admin123') {
+  if (password !== process.env.ADMIN_PASSWORD) {
     return res.render('admin/login', {
       title: 'Admin Login',
       error: 'Invalid Password',

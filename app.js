@@ -43,7 +43,7 @@ app.use('/uploads', express.static(uploadDir));
 
 // ✅ Add session middleware before routes
 app.use(session({
-  secret: 'your-admin-session-secret', // Use a strong secret (store in .env in production)
+  secret: process.env.SESSION_SECRET || 'fallback-secret-change-in-env',
   resave: false,
   saveUninitialized: false,
   cookie: { maxAge: 1000 * 60 * 60 } // Optional: 1 hour
