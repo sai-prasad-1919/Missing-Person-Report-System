@@ -254,9 +254,9 @@ CLOUD_NAME=your_cloudinary_cloud_name
 CLOUD_API_KEY=your_cloudinary_api_key
 CLOUD_API_SECRET=your_cloudinary_api_secret
 
-ADMIN_ID=admin
-ADMIN_PASSWORD=your_secure_admin_password
-SESSION_SECRET=your_random_session_secret_string
+ADMIN_ID= secure_admin_Id
+ADMIN_PASSWORD=secure_admin_password
+SESSION_SECRET=random_session_secret_string
 ```
 
 ### 4️⃣ Start the server
