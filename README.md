@@ -253,6 +253,10 @@ MONGO_URI=your_mongodb_connection_string
 CLOUD_NAME=your_cloudinary_cloud_name
 CLOUD_API_KEY=your_cloudinary_api_key
 CLOUD_API_SECRET=your_cloudinary_api_secret
+
+ADMIN_ID=admin
+ADMIN_PASSWORD=your_secure_admin_password
+SESSION_SECRET=your_random_session_secret_string
 ```
 
 ### 4️⃣ Start the server
@@ -268,8 +272,8 @@ http://localhost:3000
 ### 🔐 Admin Access
 ```
 URL:      http://localhost:3000/admin/login
-Admin ID: *****
-Password: ********
+Admin ID: (Set via ADMIN_ID in .env)
+Password: (Set via ADMIN_PASSWORD in .env)
 ```
 
 ---
